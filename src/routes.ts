@@ -3,7 +3,6 @@ import { CidadeController } from "./controllers/CidadeController";
 import { EspecialidadeController } from "./controllers/EspecialidadeController";
 import { EstadoController } from "./controllers/EstadoController";
 import { ExameController } from "./controllers/ExameController";
-import { FinalidadeController } from "./controllers/FinalidadeController";
 import { HorarioController } from "./controllers/HorarioController";
 import { TipoEnderecoController } from "./controllers/TipoEnderecoController";
 
@@ -13,7 +12,6 @@ const estadoController = new EstadoController();
 const cidadeController = new CidadeController();
 const especialidadeController = new EspecialidadeController();
 const tipoEnderecoController = new TipoEnderecoController();
-const finalidadeController = new FinalidadeController();
 const horarioController = new HorarioController();
 const exameController = new ExameController();
 
@@ -44,13 +42,6 @@ router.get("/tipoEndereco",tipoEnderecoController.read);
 router.get("/tipoEndereco/:id",tipoEnderecoController.readById);
 router.put("/tipoEndereco",tipoEnderecoController.update);
 router.delete("/tipoEndereco/:id",tipoEnderecoController.delete);
-
-//ROTAS PARA FINALIDADE
-router.post("/finalidade",finalidadeController.create);
-router.get("/finalidade",finalidadeController.read);
-router.get("/finalidade/:id",finalidadeController.readById);
-router.put("/finalidade",finalidadeController.update);
-router.delete("/finalidade/:id",finalidadeController.delete);
 
 //ROTAS PARA HORARIO
 router.post("/horario",horarioController.create);
