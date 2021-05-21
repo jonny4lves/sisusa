@@ -2,7 +2,9 @@ import { Router } from "express";
 import { CidadeController } from "./controllers/CidadeController";
 import { EspecialidadeController } from "./controllers/EspecialidadeController";
 import { EstadoController } from "./controllers/EstadoController";
+import { ExameController } from "./controllers/ExameController";
 import { FinalidadeController } from "./controllers/FinalidadeController";
+import { HorarioController } from "./controllers/HorarioController";
 import { TipoEnderecoController } from "./controllers/TipoEnderecoController";
 
 const router = Router();
@@ -12,6 +14,8 @@ const cidadeController = new CidadeController();
 const especialidadeController = new EspecialidadeController();
 const tipoEnderecoController = new TipoEnderecoController();
 const finalidadeController = new FinalidadeController();
+const horarioController = new HorarioController();
+const exameController = new ExameController();
 
 //ROTAS PARA ESTADO
 router.post("/estado",estadoController.create);
@@ -47,5 +51,20 @@ router.get("/finalidade",finalidadeController.read);
 router.get("/finalidade/:id",finalidadeController.readById);
 router.put("/finalidade",finalidadeController.update);
 router.delete("/finalidade/:id",finalidadeController.delete);
+
+//ROTAS PARA HORARIO
+router.post("/horario",horarioController.create);
+router.get("/horario",horarioController.read);
+router.get("/horario/:id",horarioController.readById);
+router.put("/horario",horarioController.update);
+router.delete("/horario/:id",horarioController.delete);
+
+//ROTAS PARA EXAME
+router.post("/exame",exameController.create);
+router.get("/exame",exameController.read);
+router.get("/exame/:id",exameController.readById);
+router.put("/exame",exameController.update);
+router.delete("/exame/:id",exameController.delete);
+
 
 export {router};
