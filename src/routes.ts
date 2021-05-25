@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { CidadeController } from "./controllers/CidadeController";
+import { EnderecoPessoaController } from "./controllers/EnderecoPessoaController";
 import { EspecialidadeController } from "./controllers/EspecialidadeController";
 import { EstadoController } from "./controllers/EstadoController";
 import { ExameController } from "./controllers/ExameController";
 import { HorarioController } from "./controllers/HorarioController";
+import { PessoaController } from "./controllers/PessoaController";
 import { TipoEnderecoController } from "./controllers/TipoEnderecoController";
 
 const router = Router();
@@ -14,6 +16,8 @@ const especialidadeController = new EspecialidadeController();
 const tipoEnderecoController = new TipoEnderecoController();
 const horarioController = new HorarioController();
 const exameController = new ExameController();
+const pessoaController = new PessoaController();
+const enderecoPessoaController = new EnderecoPessoaController();
 
 //ROTAS PARA ESTADO
 router.post("/estado",estadoController.create);
@@ -57,5 +61,19 @@ router.get("/exame/:id",exameController.readById);
 router.put("/exame",exameController.update);
 router.delete("/exame/:id",exameController.delete);
 
+//ROTAS PARA PESSOA
+router.post("/pessoa",pessoaController.create);
+router.get("/pessoa",pessoaController.read);
+router.get("/pessoa/:id",pessoaController.readById);
+router.put("/pessoa",pessoaController.update);
+router.delete("/pessoa/:id",pessoaController.delete);
 
-export {router};
+//ROTAS PARA ENDERECO
+router.post("/enderecoPessoa",enderecoPessoaController.create);
+router.get("/enderecoPessoa",enderecoPessoaController.read);
+router.get("/enderecoPessoa/:id",enderecoPessoaController.readById);
+router.put("/enderecoPessoa",enderecoPessoaController.update);
+router.delete("/enderecoPessoa/:id",enderecoPessoaController.delete);
+
+
+export {router}; 
