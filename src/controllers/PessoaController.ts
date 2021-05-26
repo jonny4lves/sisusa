@@ -20,7 +20,9 @@ class PessoaController {
     async read (request: Request, response : Response){
         const pessoaRepository = getCustomRepository(Pessoarepository);
 
-        const listaPesssoa = await pessoaRepository.find({relations:["enderecos","enderecos.cidade","enderecos.cidade.estado"]});
+        const listaPesssoa = await pessoaRepository.find({
+            relations:["enderecos","enderecos.cidade","enderecos.cidade.estado","especialidades","especialidades.especialidade"]
+        });
 
         return response.status(200).json(listaPesssoa);
     }
@@ -29,7 +31,9 @@ class PessoaController {
         const pessoaRepository = getCustomRepository(Pessoarepository);
         const {id} = request.params;
 
-        const pessoa = await pessoaRepository.findOne(id,{relations:["enderecos"]});
+        const pessoa = await pessoaRepository.findOne(id,{
+            relations:["enderecos","enderecos.cidade","enderecos.cidade.estado","especialidades","especialidades.especialidade"]
+        });
 
         return response.status(200).json(pessoa);
     }

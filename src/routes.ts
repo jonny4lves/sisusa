@@ -3,6 +3,7 @@ import { AgendamentoController } from "./controllers/AgendamentoController";
 import { CidadeController } from "./controllers/CidadeController";
 import { EnderecoPessoaController } from "./controllers/EnderecoPessoaController";
 import { EspecialidadeController } from "./controllers/EspecialidadeController";
+import { EspecialidadeMedicoController } from "./controllers/EspecialidadeMedicoController";
 import { EstadoController } from "./controllers/EstadoController";
 import { ExameController } from "./controllers/ExameController";
 import { HorarioController } from "./controllers/HorarioController";
@@ -20,6 +21,7 @@ const exameController = new ExameController();
 const pessoaController = new PessoaController();
 const enderecoPessoaController = new EnderecoPessoaController();
 const agendamentoController = new AgendamentoController();
+const especialidadeMedicoController = new EspecialidadeMedicoController();
 
 //ROTAS PARA ESTADO
 router.post("/estado",estadoController.create);
@@ -83,5 +85,12 @@ router.get("/agendamento",agendamentoController.read);
 router.get("/agendamento/:id",agendamentoController.readById);
 router.put("/agendamento",agendamentoController.update);
 router.delete("/agendamento/:id",agendamentoController.delete);
+
+//ROTAS PARA ESPECIALIDADE MEDICO
+router.post("/especialidadeMedico",especialidadeMedicoController.create);
+router.get("/especialidadeMedico",especialidadeMedicoController.read);
+router.get("/especialidadeMedico/:id",especialidadeMedicoController.readById);
+router.put("/especialidadeMedico",especialidadeMedicoController.update);
+router.delete("/especialidadeMedico/:id",especialidadeMedicoController.delete);
 
 export {router}; 

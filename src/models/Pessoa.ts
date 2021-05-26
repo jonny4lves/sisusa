@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { EnderecoPessoa } from "./EnderecoPessoa";
+import { EspecialidadeMedico } from "./EspecialidadeMedico";
 
 @Entity("pessoa")
 class Pessoa{
@@ -33,6 +34,9 @@ class Pessoa{
 
     @OneToMany(() => EnderecoPessoa, endereco => endereco.pessoa)
     enderecos : EnderecoPessoa[];
+
+    @OneToMany(()=> EspecialidadeMedico, especialidades => especialidades.medico)
+    especialidades : EspecialidadeMedico
 
 }
 
