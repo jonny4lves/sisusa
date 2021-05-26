@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AgendamentoController } from "./controllers/AgendamentoController";
 import { CidadeController } from "./controllers/CidadeController";
 import { EnderecoPessoaController } from "./controllers/EnderecoPessoaController";
 import { EspecialidadeController } from "./controllers/EspecialidadeController";
@@ -18,6 +19,7 @@ const horarioController = new HorarioController();
 const exameController = new ExameController();
 const pessoaController = new PessoaController();
 const enderecoPessoaController = new EnderecoPessoaController();
+const agendamentoController = new AgendamentoController();
 
 //ROTAS PARA ESTADO
 router.post("/estado",estadoController.create);
@@ -75,5 +77,11 @@ router.get("/enderecoPessoa/:id",enderecoPessoaController.readById);
 router.put("/enderecoPessoa",enderecoPessoaController.update);
 router.delete("/enderecoPessoa/:id",enderecoPessoaController.delete);
 
+//ROTAS PARA AGENDAMENTO
+router.post("/agendamento",agendamentoController.create);
+router.get("/agendamento",agendamentoController.read);
+router.get("/agendamento/:id",agendamentoController.readById);
+router.put("/agendamento",agendamentoController.update);
+router.delete("/agendamento/:id",agendamentoController.delete);
 
 export {router}; 
