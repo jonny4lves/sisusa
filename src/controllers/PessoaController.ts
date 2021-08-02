@@ -21,7 +21,9 @@ class PessoaController {
         const pessoaRepository = getCustomRepository(Pessoarepository);
 
         const listaPesssoa = await pessoaRepository.find({
-            relations:["enderecos","enderecos.cidade","enderecos.cidade.estado","especialidades","especialidades.especialidade"]
+            relations:["enderecos","enderecos.cidade","enderecos.cidade.estado","especialidades","especialidades.especialidade"],
+            take:1,
+            skip:2
         });
 
         return response.status(200).json(listaPesssoa);

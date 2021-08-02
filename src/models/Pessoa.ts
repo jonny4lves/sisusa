@@ -36,7 +36,7 @@ class Pessoa{
     enderecos : EnderecoPessoa[];
 
     @OneToMany(()=> EspecialidadeMedico, especialidades => especialidades.medico)
-    especialidades : EspecialidadeMedico
+    especialidades : EspecialidadeMedico[];
 
 }
 

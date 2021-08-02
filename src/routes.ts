@@ -8,6 +8,8 @@ import { EstadoController } from "./controllers/EstadoController";
 import { ExameController } from "./controllers/ExameController";
 import { HorarioController } from "./controllers/HorarioController";
 import { PessoaController } from "./controllers/PessoaController";
+import { ReceitaController } from "./controllers/ReceitaController";
+import { SolicitacaoExamesController } from "./controllers/SolicitacaoExamesController";
 import { TipoEnderecoController } from "./controllers/TipoEnderecoController";
 
 const router = Router();
@@ -22,75 +24,95 @@ const pessoaController = new PessoaController();
 const enderecoPessoaController = new EnderecoPessoaController();
 const agendamentoController = new AgendamentoController();
 const especialidadeMedicoController = new EspecialidadeMedicoController();
+const receitaController = new ReceitaController();
+const solicitacaoExamesController = new SolicitacaoExamesController();
+
+//ROTA /
+
+router.get("/", (req, res) => {
+  res.send("Nada por aqui, tente outra rota");
+});
 
 //ROTAS PARA ESTADO
-router.post("/estado",estadoController.create);
-router.get("/estado",estadoController.read);
-router.get("/estado/:id",estadoController.readById);
-router.put("/estado",estadoController.update);
-router.delete("/estado/:id",estadoController.delete);
+router.post("/estado", estadoController.create);
+router.get("/estado", estadoController.read);
+router.get("/estado/:id", estadoController.readById);
+router.put("/estado", estadoController.update);
+router.delete("/estado/:id", estadoController.delete);
+router.post("/estado/filtro", estadoController.findByDescricaoOrSigla);
 
 //ROTAS PARA CIDADE
-router.post("/cidade",cidadeController.create);
-router.get("/cidade",cidadeController.read);
-router.get("/cidade/:id",cidadeController.readById);
-router.put("/cidade",cidadeController.update);
-router.delete("/cidade/:id",cidadeController.delete);
+router.post("/cidade", cidadeController.create);
+router.post("/cidade/filtro", cidadeController.filter);
+router.get("/cidade", cidadeController.read);
+router.get("/cidade/:id", cidadeController.readById);
+router.put("/cidade", cidadeController.update);
+router.delete("/cidade/:id", cidadeController.delete);
 
 //ROTAS PARA ESPECIALIDADE
-router.post("/especialidade",especialidadeController.create);
-router.get("/especialidade",especialidadeController.read);
-router.get("/especialidade/:id",especialidadeController.readById);
-router.put("/especialidade",especialidadeController.update);
-router.delete("/especialidade/:id",especialidadeController.delete);
+router.post("/especialidade", especialidadeController.create);
+router.get("/especialidade", especialidadeController.read);
+router.get("/especialidade/:id", especialidadeController.readById);
+router.put("/especialidade", especialidadeController.update);
+router.delete("/especialidade/:id", especialidadeController.delete);
 
 //ROTAS PARA TIPOENDERECO
-router.post("/tipoEndereco",tipoEnderecoController.create);
-router.get("/tipoEndereco",tipoEnderecoController.read);
-router.get("/tipoEndereco/:id",tipoEnderecoController.readById);
-router.put("/tipoEndereco",tipoEnderecoController.update);
-router.delete("/tipoEndereco/:id",tipoEnderecoController.delete);
+router.post("/tipoEndereco", tipoEnderecoController.create);
+router.get("/tipoEndereco", tipoEnderecoController.read);
+router.get("/tipoEndereco/:id", tipoEnderecoController.readById);
+router.put("/tipoEndereco", tipoEnderecoController.update);
+router.delete("/tipoEndereco/:id", tipoEnderecoController.delete);
 
 //ROTAS PARA HORARIO
-router.post("/horario",horarioController.create);
-router.get("/horario",horarioController.read);
-router.get("/horario/:id",horarioController.readById);
-router.put("/horario",horarioController.update);
-router.delete("/horario/:id",horarioController.delete);
+router.post("/horario", horarioController.create);
+router.get("/horario", horarioController.read);
+router.get("/horario/:id", horarioController.readById);
+router.put("/horario", horarioController.update);
+router.delete("/horario/:id", horarioController.delete);
 
 //ROTAS PARA EXAME
-router.post("/exame",exameController.create);
-router.get("/exame",exameController.read);
-router.get("/exame/:id",exameController.readById);
-router.put("/exame",exameController.update);
-router.delete("/exame/:id",exameController.delete);
+router.post("/exame", exameController.create);
+router.get("/exame", exameController.read);
+router.get("/exame/:id", exameController.readById);
+router.put("/exame", exameController.update);
+router.delete("/exame/:id", exameController.delete);
 
 //ROTAS PARA PESSOA
-router.post("/pessoa",pessoaController.create);
-router.get("/pessoa",pessoaController.read);
-router.get("/pessoa/:id",pessoaController.readById);
-router.put("/pessoa",pessoaController.update);
-router.delete("/pessoa/:id",pessoaController.delete);
+router.post("/pessoa", pessoaController.create);
+router.get("/pessoa", pessoaController.read);
+router.get("/pessoa/:id", pessoaController.readById);
+router.put("/pessoa", pessoaController.update);
+router.delete("/pessoa/:id", pessoaController.delete);
 
 //ROTAS PARA ENDERECO
-router.post("/enderecoPessoa",enderecoPessoaController.create);
-router.get("/enderecoPessoa",enderecoPessoaController.read);
-router.get("/enderecoPessoa/:id",enderecoPessoaController.readById);
-router.put("/enderecoPessoa",enderecoPessoaController.update);
-router.delete("/enderecoPessoa/:id",enderecoPessoaController.delete);
+router.post("/enderecoPessoa", enderecoPessoaController.create);
+router.get("/enderecoPessoa", enderecoPessoaController.read);
+router.get("/enderecoPessoa/:id", enderecoPessoaController.readById);
+router.put("/enderecoPessoa", enderecoPessoaController.update);
+router.delete("/enderecoPessoa/:id", enderecoPessoaController.delete);
 
 //ROTAS PARA AGENDAMENTO
-router.post("/agendamento",agendamentoController.create);
-router.get("/agendamento",agendamentoController.read);
-router.get("/agendamento/:id",agendamentoController.readById);
-router.put("/agendamento",agendamentoController.update);
-router.delete("/agendamento/:id",agendamentoController.delete);
+router.post("/agendamento", agendamentoController.create);
+router.get("/agendamento", agendamentoController.read);
+router.get("/agendamento/:id", agendamentoController.readById);
+router.put("/agendamento", agendamentoController.update);
+router.delete("/agendamento/:id", agendamentoController.delete);
 
 //ROTAS PARA ESPECIALIDADE MEDICO
-router.post("/especialidadeMedico",especialidadeMedicoController.create);
-router.get("/especialidadeMedico",especialidadeMedicoController.read);
-router.get("/especialidadeMedico/:id",especialidadeMedicoController.readById);
-router.put("/especialidadeMedico",especialidadeMedicoController.update);
-router.delete("/especialidadeMedico/:id",especialidadeMedicoController.delete);
+router.post("/especialidadeMedico", especialidadeMedicoController.create);
+router.get("/especialidadeMedico", especialidadeMedicoController.read);
+router.get("/especialidadeMedico/:id", especialidadeMedicoController.readById);
+router.put("/especialidadeMedico", especialidadeMedicoController.update);
+router.delete("/especialidadeMedico/:id", especialidadeMedicoController.delete);
 
-export {router}; 
+//ROTAS PARA RECEITA
+router.post("/receita", receitaController.create);
+router.get("/receita", receitaController.read);
+router.get("/receita/:id", receitaController.readById);
+router.put("/receita", receitaController.update);
+router.delete("/receita/:id", receitaController.delete);
+
+//ROTAS PARA SOLICITACAO EXAMES
+router.post("/solicitacaoExames", solicitacaoExamesController.create);
+
+export { router };
